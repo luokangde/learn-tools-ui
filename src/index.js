@@ -1,6 +1,4 @@
-/**
- * 程序入口
- */
+'use strict';
 import React from 'react';
 import ReactDom from 'react-dom';
 import { AppContainer } from 'react-hot-loader'
@@ -11,24 +9,29 @@ import 'element-theme-default';
 
 import App from './app/container/App';
 
-class Index extends React.Component {
-    render() {
-        return (
-            <AppContainer>
-                <App />
-            </AppContainer>
-        )
-    }
+const render = Component => {
+    ReactDom.render(
+        <AppContainer>
+            <Component />
+        </AppContainer>,
+        document.getElementById('root')
+    )
 }
 
-ReactDom.render(
-    <App />,
-    document.getElementById('root')
-)
+render(App);
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
+    //提示路由错误
+    const orgError = console.error; // eslint-disable-line no-console
+    console.error = (...args) => { // eslint-disable-line no-console
+        if (args && args.length === 1 && typeof args[0] === 'string' && args[0].indexOf('You cannot change <Router routes>;') > -1) {
+            // React route changed
+        } else {
+            // Log the error as normally
+            orgError.apply(console, args);
+        }
+    };
     module.hot.accept('./app/container/App', () => {
-        const App = require('./app/container/App').default;
-        render(<AppContainer><App /></AppContainer>, document.getElementById('root'));
+        render(App);
     });
 }
