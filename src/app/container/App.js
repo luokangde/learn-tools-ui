@@ -1,7 +1,7 @@
 'use strict';
 import React from 'react';
-import Header from '../common/header';
-import Main from '../common/body'
+import Header from '../component/header';
+import Main from '../component/body'
 
 export  default class App extends React.Component {
     constructor(props) {

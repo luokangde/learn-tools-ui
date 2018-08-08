@@ -26,7 +26,7 @@ const render = Component => {
 render(Route);
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
-    //提示路由错误
+    //
     const orgError = console.error; // eslint-disable-line no-console
     console.error = (...args) => { // eslint-disable-line no-console
         if (args && args.length === 1 && typeof args[0] === 'string' && args[0].indexOf('You cannot change <Router routes>;') > -1) {
