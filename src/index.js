@@ -2,23 +2,28 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import { AppContainer } from 'react-hot-loader'
+import { Provider } from 'react-redux';
+import 'element-theme-default';
 
 import './resource/styles/common.scss';
 import './resource/styles/prism.css';
-import 'element-theme-default';
+import Route  from './router';
+import store from './store/store'
 
-import RouterCommon from './router.common';
+console.log(store.getState())
 
 const render = Component => {
     ReactDom.render(
-        <AppContainer>
-            <Component />
-        </AppContainer>,
+        <Provider store={store}>
+            <AppContainer>
+                <Component />
+            </AppContainer>
+        </Provider>,
         document.getElementById('root')
     )
 }
 
-render(RouterCommon);
+render(Route);
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
     //提示路由错误
@@ -31,7 +36,7 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
             orgError.apply(console, args);
         }
     };
-    module.hot.accept('./router.common', () => {
-        render(RouterCommon);
+    module.hot.accept('./router', () => {
+        render(Route);
     });
 }
