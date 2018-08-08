@@ -7,7 +7,7 @@ import './resource/styles/common.scss';
 import './resource/styles/prism.css';
 import 'element-theme-default';
 
-import App from './app/container/App';
+import RouterCommon from './router.common';
 
 const render = Component => {
     ReactDom.render(
@@ -18,7 +18,7 @@ const render = Component => {
     )
 }
 
-render(App);
+render(RouterCommon);
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
     //提示路由错误
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
             orgError.apply(console, args);
         }
     };
-    module.hot.accept('./app/container/App', () => {
-        render(App);
+    module.hot.accept('./router.common', () => {
+        render(RouterCommon);
     });
 }
