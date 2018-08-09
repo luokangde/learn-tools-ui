@@ -1,19 +1,24 @@
 'use strict';
 import React from 'react';
 import Header from '../component/header';
-import Main from '../component/body'
+import Navigation from '../component/navigation'
+import Body from './body';
 
 export  default class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+
+        };
     }
 
     render() {
         return (
-            <div>
+            <div className="main">
                 <Header />
-                <Main />
+                <Navigation />
+                <div className="line"></div>
+                <Body />
             </div>
         )
     }

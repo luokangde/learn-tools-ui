@@ -6,7 +6,7 @@ import React from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import NotFound from '../app/container/NotFound';
 import Login from '../app/container/Login';
-import App from '../app/container/App';
+import App from '../app/main/Index';
 
 export default () => (
     <HashRouter>
