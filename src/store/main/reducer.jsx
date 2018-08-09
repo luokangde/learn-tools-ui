@@ -1,8 +1,11 @@
 import * as home from './type';
 
-export const main = (state = {} , action = {}) => {
+const initState = {
+}
+
+export const main = (state = initState , action = {}) => {
     switch(action.type){
-        case home.REQUESTDATA:
+        case home.REQUESTMAINLIST:
             return {
                 ...state,
                 ...{[action.datatype]: action.value}

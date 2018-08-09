@@ -1,10 +1,6 @@
 'use strict';
 import axios from 'axios';
 import qs from 'querystring';
-import apiPrefix from '../environment';
-
-// url prefix
-axios.defaults.baseURL = apiPrefix.url + ":" + apiPrefix.port + apiPrefix.prefix;
 
 export default class http {
     /**

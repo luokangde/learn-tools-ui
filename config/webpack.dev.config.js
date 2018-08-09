@@ -7,14 +7,20 @@ const openBrowserPlugin = require('open-browser-webpack-plugin');
 const webpackConfigDev = {
     mode:'development',
     plugins:[
-        new openBrowserPlugin({url:"http://localhost:3000"})
+        new openBrowserPlugin({url:"http://127.0.0.1:3000"})
     ],
     devServer:{
         contentBase: path.join(__dirname,"../public"),
         hot: true,
-        // host: '0.0.0.0',
+        host: '0.0.0.0',
         inline: true,
         port: 3000,
+        proxy: {
+            "/" : {
+                target: "https://c.y.qq.com",
+                changeOrigin: true
+            }
+        },
     }
 }
 module.exports = merge(webpackConfigBase, webpackConfigDev);

@@ -10,7 +10,7 @@ import './resource/styles/prism.css';
 import Route  from './router';
 import store from './store/store'
 
-console.log(store.getState())
+// console.log(store.getState())
 // listen store
 store.subscribe(() => {
   console.log('store is change......');

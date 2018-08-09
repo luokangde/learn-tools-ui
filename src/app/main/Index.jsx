@@ -12,7 +12,11 @@ import Body from './body';
 
 class Index extends React.Component {
     static propTypes = {
-        requestData: PropTypes.Object.isRequired
+        
+    }
+
+    componentDidMount(){
+        this.props.mainActions.requestData("1", "list")
     }
 
     constructor(props) {
@@ -50,4 +54,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Index);
