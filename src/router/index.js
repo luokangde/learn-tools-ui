@@ -3,18 +3,21 @@
  *  router config
  */
 import React from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
-import NotFound from '../app/container/NotFound';
-import Login from '../app/container/Login';
-import App from '../app/main/Index';
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import asyncComponent from '../utils/asyncComponent';
+
+import Index from '../app/main/Index';
+const Login = asyncComponent(() => import('../app/container/Login'));
+const NotFound = asyncComponent(() => import('../app/container/NotFound'));
 
 export default () => (
     <HashRouter>
         <Switch>
-            <Route path={"/"} component={App}/>
+            <Route path={"/"} exact component={Index}/>
             <Route path="/404" component={NotFound} />
             <Route path="/login" component={Login} />
             <Route component={NotFound} />
+            <Redirect to="/" />
         </Switch>
     </HashRouter>
 )

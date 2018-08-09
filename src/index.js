@@ -11,6 +11,10 @@ import Route  from './router';
 import store from './store/store'
 
 console.log(store.getState())
+// listen store
+store.subscribe(() => {
+  console.log('store is change......');
+});
 
 const render = Component => {
     ReactDom.render(

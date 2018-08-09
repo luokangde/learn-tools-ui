@@ -8,6 +8,7 @@
     "element-react": "^1.4.20",
     "element-theme-default": "^1.4.13",
     "node-sass": "^4.9.2",
+    "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-hot-loader": "^4.3.4",

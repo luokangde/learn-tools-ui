@@ -1,10 +1,20 @@
 'use strict';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+
+import * as mainCreators from '../../store/main/action'
 import Header from '../component/header';
 import Navigation from '../component/navigation'
 import Body from './body';
 
-export  default class App extends React.Component {
+
+class Index extends React.Component {
+    static propTypes = {
+        requestData: PropTypes.Object.isRequired
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -13,6 +23,7 @@ export  default class App extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div className="main">
                 <Header />
@@ -23,3 +34,20 @@ export  default class App extends React.Component {
         )
     }
 }
+
+//关联状态机
+const mapStateToProps = (state) => {
+    const { main } = state
+    return {
+        main
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    const mainActions = bindActionCreators(mainCreators, dispatch)
+    return {
+        mainActions
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index);
