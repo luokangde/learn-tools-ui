@@ -1,22 +1,27 @@
 'use strict';
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 
-import * as mainCreators from '../../store/main/action'
+import { requestData } from '../../store/main/action'
 import Header from '../component/header';
 import Navigation from '../component/navigation'
 import Body from './body';
 
-
 class Index extends React.Component {
     static propTypes = {
-        
+        cookies: instanceOf(Cookies).isRequired
     }
 
     componentDidMount(){
-        this.props.mainActions.requestData("1", "list")
+        //set cookie
+        const { cookies } = this.props;
+        cookies.set('uid', '111111111', {
+            path: '/'
+        });
+        this.props.requestData("1", "list");
+        console.log('cookie cid', cookies.get("cid"))
     }
 
     constructor(props) {
@@ -39,22 +44,8 @@ class Index extends React.Component {
     }
 }
 
-//关联状态机
-const mapStateToProps = (state) => {
-    const { main } = state
-    return {
-        main
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    const mainActions = bindActionCreators(mainCreators, dispatch)
-    return {
-        mainActions
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Index);
+export default withCookies(connect(state => ({
+    mainData: state.mainData,
+}), {
+    requestData
+})(Index));

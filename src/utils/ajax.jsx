@@ -2,6 +2,17 @@
 import axios from 'axios';
 import qs from 'querystring';
 
+const $axios = axios.create({
+    withCredentials: true,
+    timeout: 10000
+});
+
+const errorMsg = (error) =>{
+    if(error.message == 'Network Error' || error.response.status >= 400) {
+        return {isSuccess: false, data: error.message}
+    }
+}
+
 export default class http {
     /**
      * ajax get
@@ -13,11 +24,11 @@ export default class http {
         try{
             let query = await qs.stringify(params)
             if(params){
-                return await axios.get(url + '?' + query)
+                return await $axios.get(url + '?' + query)
             }
-            return await axios.get(url)
+            return await $axios.get(url)
         }catch(error){
-            return error
+            return errorMsg(error)
         }
     }
 
@@ -29,9 +40,9 @@ export default class http {
      */
     static async post(url, params){
         try{
-            return await axios.post(url, params)
+            return await $axios.post(url, params)
         }catch(error){
-            return error
+            return errorMsg(error)
         }
     }
 
@@ -43,9 +54,9 @@ export default class http {
      */
     static async patch(url, params){
         try {
-            return await axios.patch(url, params)
+            return await $axios.patch(url, params)
         }catch (error){
-            return error
+            return errorMsg(error)
         }
     }
 
@@ -57,9 +68,9 @@ export default class http {
      */
     static async put(url, params){
         try{
-            return await axios.put(url, params)
+            return await $axios.put(url, params)
         }catch (error){
-            return error
+            return errorMsg(error)
         }
     }
 
@@ -71,9 +82,9 @@ export default class http {
      */
     static async delete(url, params){
         try{
-            return await axios.delete(url, params)
+            return await $axios.delete(url, params)
         } catch (error){
-
+            return errorMsg(error)
         }
     }
 }

@@ -3,7 +3,7 @@ import * as home from './type';
 const initState = {
 }
 
-export const main = (state = initState , action = {}) => {
+export const mainData = (state = initState , action = {}) => {
     switch(action.type){
         case home.REQUESTMAINLIST:
             return {

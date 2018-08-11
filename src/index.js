@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux';
+import { CookiesProvider } from 'react-cookie';
 import 'element-theme-default';
 
 import './resource/styles/common.scss';
@@ -20,7 +21,9 @@ const render = Component => {
     ReactDom.render(
         <Provider store={store}>
             <AppContainer>
-                <Component />
+                <CookiesProvider>
+                    <Component />
+                </CookiesProvider>
             </AppContainer>
         </Provider>,
         document.getElementById('root')

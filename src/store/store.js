@@ -1,10 +1,10 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
-import * as main from './main/reducer';
+import * as mainData from './main/reducer';
 import thunk from 'redux-thunk';
 
 const store = createStore(
     combineReducers({
-        ...main
+        ...mainData
     }),
     applyMiddleware(thunk)
 );
