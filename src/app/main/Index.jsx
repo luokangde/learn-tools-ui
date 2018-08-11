@@ -20,8 +20,7 @@ class Index extends React.Component {
         cookies.set('uid', '111111111', {
             path: '/'
         });
-        this.props.requestData("1", "list");
-        console.log('cookie cid', cookies.get("cid"))
+        this.props.requestData("1", "dataList");
     }
 
     constructor(props) {

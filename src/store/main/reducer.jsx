@@ -1,6 +1,7 @@
 import * as home from './type';
 
 const initState = {
+    dataList: []
 }
 
 export const mainData = (state = initState , action = {}) => {
