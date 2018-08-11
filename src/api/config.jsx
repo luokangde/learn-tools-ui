@@ -6,6 +6,7 @@ let baseURL;
 let fileServerUrl = '//elm.cangdu.org/img';
 if(process.env.NODE_ENV === 'development'){
     // baseURL = '//172.20.10.12:8080';
+    baseURL = '';
 }else{
     baseURL = '//api.cangdu.org';
 }
@@ -19,7 +20,7 @@ module.exports = (key, type) => {
     // 开发模式下使用proxy 阿里巴巴RAP数据
     if(process.env.NODE_ENV === 'development'){
         return {
-            baseURL: "",
+            baseURL: baseURL,
             api: api[key]
         }
     }
