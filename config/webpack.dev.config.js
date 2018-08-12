@@ -14,13 +14,7 @@ const webpackConfigDev = {
         hot: true,
         host: '0.0.0.0',
         inline: true,
-        port: 3000,
-        proxy: {
-            "/" : {
-                target: "http://rapapi.org/mockjs/36126",
-                changeOrigin: true
-            }
-        },
+        port: 3000
     }
 }
 module.exports = merge(webpackConfigBase, webpackConfigDev);

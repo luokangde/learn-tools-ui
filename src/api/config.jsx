@@ -3,38 +3,40 @@
  */
 'use strict';
 let baseURL;
-let fileServerUrl = '//elm.cangdu.org/img';
 if(process.env.NODE_ENV === 'development'){
-    // baseURL = '//172.20.10.12:8080';
-    baseURL = '';
+    baseURL = {
+        url: '//rap2api.taobao.org/app/mock/25977',
+        oosUrl: '//elm.cangdu.org/img'
+    }
 }else{
-    baseURL = '//api.cangdu.org';
+    baseURL = {
+        url: '//api.cangdu.org',
+        oosUrl: '//elm.cangdu.org/img'
+    }
 }
 const api = {
     learnUrl: '/learn/index',
     login: '/sys/login',
-    mainList: '/main/getList'
+    mainList: '/lrean/getList'
 }
-
+/**
+ * example
+ *      new URL('mainList')
+ * @param key api
+ * @param type
+ * @returns {*}
+ */
 module.exports = (key, type) => {
-    // 开发模式下使用proxy 阿里巴巴RAP数据
-    if(process.env.NODE_ENV === 'development'){
+    if(key && type) {
         return {
-            baseURL: baseURL,
-            api: api[key]
-        }
-    }
-
-    if(key && type == "fileServerUrl"){
-        return {
-            baseURL: fileServerUrl,
+            baseURL: baseURL[type],
             api: api[key]
         }
     }else if(key && !type){
         return {
-            baseURL: baseURL,
+            baseURL: baseURL.url,
             api: api[key]
         }
     }
-    return {baseURL: "", api: ""};
+    return {baseURL: "", api: ""}
 };

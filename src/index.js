@@ -6,10 +6,11 @@ import { Provider } from 'react-redux';
 import { CookiesProvider } from 'react-cookie';
 import 'element-theme-default';
 
+// import '../theme';
 import './resource/styles/common.scss';
 import './resource/styles/prism.css';
 import Route  from './router';
-import store from './store/store'
+import store from './store/store';
 
 // console.log(store.getState())
 // listen store

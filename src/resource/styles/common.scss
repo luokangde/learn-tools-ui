@@ -46,6 +46,12 @@ body {
       height: 60px;
       line-height: 60px;
       box-sizing: border-box;
+
+      .nav-customer.is-active{
+        color: #fff;
+        font-weight: 700;
+      }
+
     }
 
     h1 {

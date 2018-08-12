@@ -6,7 +6,7 @@ const merge = require("webpack-merge");
 const webpackConfigProd = {
     mode: "production",
     plugins:[
-        new  CleanWebpackPlugin(["dist"],{
+        new  CleanWebpackPlugin(["bulid"],{
             root: path.join(__dirname,"../")
         })
     ]
