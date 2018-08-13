@@ -70,7 +70,7 @@ export default class Body extends React.Component {
 
     render(){
         return(
-            <div className="body">
+            <div>
                 <div className="search">
                     <Input placeholder="请输入查询信息" style={{width: '240px'}}/>
                     <Button type="primary">查询</Button>

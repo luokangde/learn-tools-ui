@@ -9,13 +9,15 @@ import asyncComponent from '../utils/asyncComponent';
 import Index from '../app/main/Index';
 const Login = asyncComponent(() => import('../app/container/Login'));
 const NotFound = asyncComponent(() => import('../app/container/NotFound'));
+const Courseware = asyncComponent(() => import('../app/courseware/index'));
 
 export default () => (
     <HashRouter>
         <Switch>
             <Route path={"/"} exact component={Index}/>
-            <Route path="/404" component={NotFound} />
-            <Route path="/login" component={Login} />
+            <Route path={"/404"} component={NotFound} />
+            <Route path={"/login"} component={Login} />
+            <Route path={"/courseware"} component={Courseware}/>
             <Route component={NotFound} />
             <Redirect to="/" />
         </Switch>
