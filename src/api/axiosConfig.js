@@ -24,7 +24,7 @@ module.exports = (method, url, params) => {
             params: null,
             data: null,
             headers: null,
-            withCredentials: true, //是否携带cookies发起请求
+            withCredentials: true, //跨域是否携带cookies发起请求
             validateStatus:(status)=>{
                 return status >= 200 && status < 300;
             },

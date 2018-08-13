@@ -2,41 +2,27 @@
  *
  */
 'use strict';
+
 let baseURL;
 if(process.env.NODE_ENV === 'development'){
-    baseURL = {
-        url: '//rap2api.taobao.org/app/mock/25977',
-        oosUrl: '//elm.cangdu.org/img'
-    }
+    baseURL = '//rap2api.taobao.org/app/mock/25977'
 }else{
-    baseURL = {
-        url: '//api.cangdu.org',
-        oosUrl: '//elm.cangdu.org/img'
+    baseURL = '//rap2api.taobao.org/app/mock/25977'
+}
+
+const generateUrl = (baseUrl) => {
+    return{
+        learnUrl: baseUrl + '/learn/index',
+        login: baseUrl + '/sys/login',
+        mainList: baseUrl + '/lrean/getList'
     }
 }
-const api = {
-    learnUrl: '/learn/index',
-    login: '/sys/login',
-    mainList: '/lrean/getList'
-}
+
+
 /**
- * example
- *      new URL('mainList')
- * @param key api
- * @param type
- * @returns {*}
+ * environment config
+ * @type {{url: {learnUrl, login, mainList}}}
  */
-module.exports = (key, type) => {
-    if(key && type) {
-        return {
-            baseURL: baseURL[type],
-            api: api[key]
-        }
-    }else if(key && !type){
-        return {
-            baseURL: baseURL.url,
-            api: api[key]
-        }
-    }
-    return {baseURL: "", api: ""}
-};
+export const environment = {
+    url: generateUrl(baseURL),
+}

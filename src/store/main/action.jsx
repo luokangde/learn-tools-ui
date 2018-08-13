@@ -1,13 +1,12 @@
 import * as types from './type';
 import http from '../../api/ajax'
-import URL from '../../api/config'
+import {environment} from '../../api/config'
 
 const fetchMainList = (currentPage) =>{
     let params = {}
     params.currentPage = currentPage;
     params.pageSize = 10;
-    const _url_ = new URL("mainList");
-    return http.get(_url_.baseURL + _url_.api)
+    return http.get(environment.url.mainList)
 }
 
 //初始化获取数据列表，保存至redux
