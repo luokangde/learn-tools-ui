@@ -13,12 +13,12 @@ export default class Body extends React.Component {
                     width: 180
                 },
                 {
-                    label: "姓名",
+                    label: "课件名",
                     prop: "name",
                     width: 180
                 },
                 {
-                    label: "地址",
+                    label: "课件地址",
                     prop: "address"
                 },
                 {
@@ -72,8 +72,12 @@ export default class Body extends React.Component {
         return(
             <div>
                 <div className="search">
-                    <Input placeholder="请输入查询信息" style={{width: '240px'}}/>
-                    <Button type="primary">查询</Button>
+                    <Input placeholder="请输入日期" style={{width: '240px'}}/>
+                    <Input placeholder="请输入课件名" style={{width: '240px'}}/>
+                    <Button type="primary" icon="search">搜索</Button>
+                    <Button type="primary" icon="plus">新增</Button>
+                    <Button type="primary" icon="edit" disabled={true}>修改</Button>
+                    <Button type="primary" icon="delete" disabled={true}>删除</Button>
                 </div>
                 <Table
                     style={{width: '100%'}}
