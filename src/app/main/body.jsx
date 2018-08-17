@@ -69,18 +69,22 @@ export default class Body extends React.Component {
     onCurrentChange(){
     }
 
-    onClick() {
+    handleOnClick(url) {
+        this.setState({redirect: true, url: url});
 
     }
 
     render(){
+        if (this.state.redirect) {
+            return <Redirect push to={this.state.url}/>
+        }
         return(
             <div>
                 <div className="search">
                     <Input placeholder="请输入日期" style={{width: '240px'}}/>
                     <Input placeholder="请输入课件名" style={{width: '240px'}}/>
                     <Button type="primary" icon="search">搜索</Button>
-                    <Button type="primary" icon="plus" onClick={()=> (<Redirect to="/upcourseware" /> )}>新增</Button>
+                    <Button type="primary" icon="plus" onClick={this.handleOnClick.bind(this, '/upcourseware')}>新增</Button>
                     <Button type="primary" icon="edit" disabled={true}>修改</Button>
                     <Button type="primary" icon="delete" disabled={true}>删除</Button>
                 </div>
