@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 import { Input,Button,Table,Tag,Pagination } from 'element-react';
+import { Redirect } from 'react-router-dom';
 
 export default class Body extends React.Component {
     constructor(props){
@@ -68,6 +69,10 @@ export default class Body extends React.Component {
     onCurrentChange(){
     }
 
+    onClick() {
+
+    }
+
     render(){
         return(
             <div>
@@ -75,7 +80,7 @@ export default class Body extends React.Component {
                     <Input placeholder="请输入日期" style={{width: '240px'}}/>
                     <Input placeholder="请输入课件名" style={{width: '240px'}}/>
                     <Button type="primary" icon="search">搜索</Button>
-                    <Button type="primary" icon="plus">新增</Button>
+                    <Button type="primary" icon="plus" onClick={()=> (<Redirect to="/upcourseware" /> )}>新增</Button>
                     <Button type="primary" icon="edit" disabled={true}>修改</Button>
                     <Button type="primary" icon="delete" disabled={true}>删除</Button>
                 </div>

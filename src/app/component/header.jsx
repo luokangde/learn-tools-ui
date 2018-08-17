@@ -1,6 +1,6 @@
 'use strict';
 import React from 'react';
-import { Layout, Menu } from 'element-react';
+import { Layout, Menu, Badge } from 'element-react';
 import { NavLink } from 'react-router-dom';
 
 class Header extends React.Component{
@@ -42,12 +42,19 @@ class Header extends React.Component{
                 <Layout.Col span="5" className = "header-col">
                     <Menu defaultActive={this.state.onSelectSettingActive} theme="dark" className="nav float-right" mode="horizontal" onSelect={this.onSelectSetting.bind(this)}>
                         <Menu.Item index="1" className="nav-customer">
-                            <i className="el-icon-message"></i>
+                            <Badge isDot>
+                                待办
+                            </Badge>
                         </Menu.Item>
-                        <Menu.SubMenu index="2" title="张飞">
-                            <Menu.Item index="2-1" style={{minWidth: '80px'}}>基本资料</Menu.Item>
-                            <Menu.Item index="2-2" style={{minWidth: '80px'}}>修改密码</Menu.Item>
-                            <Menu.Item index="2-3" style={{minWidth: '80px'}}>退出</Menu.Item>
+                        <Menu.Item index="2" className="nav-customer">
+                            <Badge isDot>
+                                消息
+                            </Badge>
+                        </Menu.Item>
+                        <Menu.SubMenu index="3" title="张飞">
+                            <Menu.Item index="3-1" style={{minWidth: '80px'}}>基本资料</Menu.Item>
+                            <Menu.Item index="3-2" style={{minWidth: '80px'}}>修改密码</Menu.Item>
+                            <Menu.Item index="3-3" style={{minWidth: '80px'}}>退出</Menu.Item>
                         </Menu.SubMenu>
                     </Menu>
                 </Layout.Col>

@@ -1,6 +1,6 @@
 import * as types from './type';
 import http from '../../api/ajax'
-import {environment} from '../../api/config'
+import {environment} from '../../api/environment'
 
 const fetchMainList = (currentPage) =>{
     let params = {}
